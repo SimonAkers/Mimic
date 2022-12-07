@@ -13,8 +13,8 @@ public class Device {
     private EventListener eventListener;
 
     private final String name;
-    private final List<MidiDevice.Info> info;
-    private final List<MidiDevice> device;
+    private final List<MidiDevice.Info> infos;
+    private final List<MidiDevice> devices;
     private final Receiver receiver;
 
     /**
@@ -24,8 +24,8 @@ public class Device {
      */
     public Device(String name) {
         this.name = name;
-        this.info = new ArrayList<>();
-        this.device = new ArrayList<>();
+        this.infos = new ArrayList<>();
+        this.devices = new ArrayList<>();
 
         // Create a receiver to pass messages to the event listener
         receiver = new Receiver() {
@@ -51,8 +51,8 @@ public class Device {
 
         for (MidiDevice.Info info : allDevicesInfo) {
             if (info.getName().equals(this.name)) {
-                this.info.add(info);
-                this.device.add(MidiSystem.getMidiDevice(info));
+                this.infos.add(info);
+                this.devices.add(MidiSystem.getMidiDevice(info));
             }
         }
 
@@ -69,7 +69,7 @@ public class Device {
             init();
         }
 
-        for (MidiDevice device : this.device) {
+        for (MidiDevice device : this.devices) {
             device.open();
 
             if (device.getMaxTransmitters() != 0) {
@@ -82,9 +82,27 @@ public class Device {
      * Closes the connection to the device.
      */
     public void close() {
-        for (MidiDevice device : this.device) {
+        for (MidiDevice device : this.devices) {
             device.close();
         }
+    }
+
+    public void send(MidiMessage message, long timeStamp) throws MidiUnavailableException {
+        for (MidiDevice device : devices) {
+            if (device.getMaxReceivers() != 0) {
+                device.getReceiver().send(message, -1);
+            }
+        }
+    }
+
+    public void sendSysex(byte[] bytes) throws MidiUnavailableException, InvalidMidiDataException {
+        SysexMessage msg = new SysexMessage(bytes, bytes.length);
+        send(msg, -1);
+    }
+
+    public void sendShort(int status, int data1, int data2) throws MidiUnavailableException, InvalidMidiDataException {
+        ShortMessage msg = new ShortMessage(status, data1, data2);
+        send(msg, -1);
     }
 
     /**
