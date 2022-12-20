@@ -38,8 +38,10 @@ public class MacroManager implements Device.EventListener {
     }
 
     private void runMacros(int note) {
-        for (Macro macro : macros.get(note)) {
-            macro.execute();
+        if (macros.containsKey(note)) {
+            for (Macro macro : macros.get(note)) {
+                macro.execute();
+            }
         }
     }
 
@@ -50,5 +52,9 @@ public class MacroManager implements Device.EventListener {
         }
 
         macros.get(note).add(macro);
+    }
+
+    public void addMacro(String noteName, Macro macro) {
+        addMacro(MidiUtils.note(noteName), macro);
     }
 }
