@@ -1,7 +1,11 @@
 package net.shayes.midimacros;
 
+import net.shayes.midimacros.macros.KeyboardMacro;
+import net.shayes.midimacros.macros.MacroManager;
+
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiUnavailableException;
+import java.awt.*;
 import java.util.Scanner;
 
 public class Main {
@@ -9,16 +13,22 @@ public class Main {
         Scanner stdin = new Scanner(System.in);
 
         LaunchpadMK2 device = new LaunchpadMK2();
+        MacroManager manager = new MacroManager(device);
 
         try {
             device.open();
             device.sessionMode();
+
+            manager.addMacro("D#2", new KeyboardMacro("Discord Mute", "alt + `"));
         } catch (MidiUnavailableException e) {
             System.err.printf("[ERROR] MIDI unavailable: %s\n", e.getMessage());
             System.exit(1);
         } catch (InvalidMidiDataException e) {
             System.err.printf("[ERROR] Bad MIDI data: %s\n", e.getMessage());
             System.exit(2);
+        } catch (AWTException e) {
+            System.err.printf("[ERROR] Could not start robot: %s\n", e.getMessage());
+            System.exit(3);
         }
 
         stdin.nextLine();
