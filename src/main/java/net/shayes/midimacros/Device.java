@@ -1,7 +1,5 @@
 package net.shayes.midimacros;
 
-import net.shayes.midimacros.macros.MacroManager;
-
 import javax.sound.midi.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +15,6 @@ public class Device {
     private final String name;
     private final List<MidiDevice> devices;
     private final Receiver receiver;
-    private final MacroManager macroManager;
 
     /**
      * Constructs a new device specified by its name.
@@ -27,9 +24,6 @@ public class Device {
     public Device(String name) {
         this.name = name;
         this.devices = new ArrayList<>();
-        this.macroManager = new MacroManager();
-
-        setEventListener(macroManager);
 
         // Create a receiver to pass messages to the event listener
         receiver = new Receiver() {
@@ -115,10 +109,6 @@ public class Device {
      */
     public void setEventListener(EventListener eventListener) {
         this.eventListener = eventListener;
-    }
-
-    public MacroManager getMacroManager() {
-        return macroManager;
     }
 
     /**
