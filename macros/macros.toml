@@ -1,0 +1,27 @@
+##################
+# Keybind macros #
+##################
+
+[[keybinds]]
+name = "Discord Toggle Mute"
+note = "D#2"
+keybind = "alt + `"
+
+[[keybinds]]
+name = "Open Terminal"
+note = "B-1"
+keybind = "ctrl + alt + t"
+
+#################
+# Script macros #
+#################
+
+[[scripts]]
+name = "Groovy Script"
+note = "F1"
+script = "test.gy"
+
+[[scripts]]
+name = "Jython Script"
+note = "G0"
+script = "test.jy"
