@@ -1,7 +1,7 @@
-package net.shayes.midimacros;
+package net.shayes.mimic;
 
-import net.shayes.midimacros.macros.KeyboardMacro;
-import net.shayes.midimacros.macros.MacroManager;
+import net.shayes.mimic.macros.KeyboardMacro;
+import net.shayes.mimic.macros.MacroManager;
 
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiUnavailableException;

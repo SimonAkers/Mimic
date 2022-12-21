@@ -1,4 +1,4 @@
-package net.shayes.midimacros;
+package net.shayes.mimic;
 
 import org.jetbrains.annotations.Nullable;
 

@@ -1,4 +1,4 @@
-package net.shayes.midimacros.macros;
+package net.shayes.mimic.macros;
 
 public abstract class Macro {
     String name;

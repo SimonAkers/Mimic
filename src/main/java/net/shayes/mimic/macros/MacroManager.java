@@ -1,7 +1,7 @@
-package net.shayes.midimacros.macros;
+package net.shayes.mimic.macros;
 
-import net.shayes.midimacros.Device;
-import net.shayes.midimacros.util.MidiUtils;
+import net.shayes.mimic.Device;
+import net.shayes.mimic.util.MidiUtils;
 
 import javax.sound.midi.MidiMessage;
 import javax.sound.midi.ShortMessage;

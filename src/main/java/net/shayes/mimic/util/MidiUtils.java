@@ -1,4 +1,4 @@
-package net.shayes.midimacros.util;
+package net.shayes.mimic.util;
 
 import javax.sound.midi.MidiDevice;
 import javax.sound.midi.MidiSystem;
