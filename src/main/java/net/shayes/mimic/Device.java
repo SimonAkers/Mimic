@@ -83,7 +83,9 @@ public class Device {
             device.close();
         }
     }
-
+    /** 
+     * sends messages to the device.
+     */
     public void send(MidiMessage message, long timeStamp) throws MidiUnavailableException {
         for (MidiDevice device : devices) {
             if (device.getMaxReceivers() != 0) {
@@ -91,12 +93,24 @@ public class Device {
             }
         }
     }
-
+    /**
+     * 
+     * @param bytes
+     * @throws MidiUnavailableException
+     * @throws InvalidMidiDataException
+     */
     public void sendSysex(byte[] bytes) throws MidiUnavailableException, InvalidMidiDataException {
         SysexMessage msg = new SysexMessage(bytes, bytes.length);
         send(msg, -1);
     }
-
+    /**
+     * 
+     * @param status
+     * @param data1
+     * @param data2
+     * @throws MidiUnavailableException
+     * @throws InvalidMidiDataException
+     */
     public void sendShort(int status, int data1, int data2) throws MidiUnavailableException, InvalidMidiDataException {
         ShortMessage msg = new ShortMessage(status, data1, data2);
         send(msg, -1);
