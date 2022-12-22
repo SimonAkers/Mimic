@@ -1,3 +1,5 @@
+![Mimic Logo](/res/logo/mimic_small_border.png)
+
 ---
 
 # Mimic
