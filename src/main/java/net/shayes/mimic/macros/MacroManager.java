@@ -3,8 +3,17 @@ package net.shayes.mimic.macros;
 import net.shayes.mimic.Device;
 import net.shayes.mimic.util.MidiUtils;
 
+import org.tomlj.Toml;
+import org.tomlj.TomlArray;
+import org.tomlj.TomlParseResult;
+import org.tomlj.TomlTable;
+
 import javax.sound.midi.MidiMessage;
 import javax.sound.midi.ShortMessage;
+import java.awt.*;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -35,6 +44,31 @@ public class MacroManager implements Device.EventListener {
              System.out.println("PRESSED " + noteName);
              runMacros(note);
          }
+    }
+
+    public void loadMacros(String file) throws IOException, AWTException {
+        loadMacros(Paths.get(file));
+    }
+
+    public void loadMacros(Path file) throws IOException, AWTException {
+        TomlParseResult result = Toml.parse(file);
+
+        TomlArray keybinds = result.getArray("keybinds");
+        //TomlArray scripts = result.getArray("scripts");
+        TomlArray colors = result.getArray("colors");
+
+        if (keybinds != null) {
+            for (int i = 0; i < keybinds.size(); i++) {
+                TomlTable table = keybinds.getTable(i);
+
+                String name = table.getString("name");
+                String note = table.getString("note");
+                String keybind = table.getString("keybind");
+
+                Macro macro = new KeyboardMacro(name, keybind);
+                addMacro(note, macro);
+            }
+        }
     }
 
     private void runMacros(int note) {

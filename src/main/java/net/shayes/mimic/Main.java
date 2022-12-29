@@ -6,6 +6,7 @@ import net.shayes.mimic.macros.MacroManager;
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiUnavailableException;
 import java.awt.*;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -19,7 +20,9 @@ public class Main {
             device.open();
             device.sessionMode();
 
-            manager.addMacro("D#2", new KeyboardMacro("Discord Mute", "alt + `"));
+            manager.loadMacros("macros/macros.toml");
+
+            //manager.addMacro("D#2", new KeyboardMacro("Discord Mute", "alt + `"));
         } catch (MidiUnavailableException e) {
             System.err.printf("[ERROR] MIDI unavailable: %s\n", e.getMessage());
             System.exit(1);
@@ -29,6 +32,9 @@ public class Main {
         } catch (AWTException e) {
             System.err.printf("[ERROR] Could not start robot: %s\n", e.getMessage());
             System.exit(3);
+        } catch (IOException e) {
+            System.err.printf("[ERROR] Could not load macros file: %s\n", e.getMessage());
+            System.exit(4);
         }
 
         stdin.nextLine();
