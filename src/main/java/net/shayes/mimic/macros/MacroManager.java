@@ -54,8 +54,6 @@ public class MacroManager implements Device.EventListener {
         TomlParseResult result = Toml.parse(file);
 
         TomlArray keybinds = result.getArray("keybinds");
-        //TomlArray scripts = result.getArray("scripts");
-        TomlArray colors = result.getArray("colors");
 
         if (keybinds != null) {
             for (int i = 0; i < keybinds.size(); i++) {
