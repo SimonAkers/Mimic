@@ -1,6 +1,5 @@
 package net.shayes.mimic;
 
-import net.shayes.mimic.macros.KeyboardMacro;
 import net.shayes.mimic.macros.MacroManager;
 
 import javax.sound.midi.InvalidMidiDataException;
@@ -20,7 +19,8 @@ public class Main {
             device.open();
             device.sessionMode();
 
-            manager.loadMacros("macros/macros.toml");
+            device.loadColors("data/colors.toml");
+            manager.loadMacros("data/macros.toml");
 
             //manager.addMacro("D#2", new KeyboardMacro("Discord Mute", "alt + `"));
         } catch (MidiUnavailableException e) {
