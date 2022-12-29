@@ -4,7 +4,7 @@ import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiUnavailableException;
 import java.util.HexFormat;
 
-public class LaunchpadMK2 extends Device {
+public class LaunchpadMK2 extends ColorDevice {
     public static final String DEVICE_NAME = "Launchpad MK2";
 
     public LaunchpadMK2() {
