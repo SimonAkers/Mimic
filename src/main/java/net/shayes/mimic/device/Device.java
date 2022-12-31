@@ -1,4 +1,4 @@
-package net.shayes.mimic;
+package net.shayes.mimic.device;
 
 import javax.sound.midi.*;
 import java.util.ArrayList;

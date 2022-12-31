@@ -1,5 +1,6 @@
 package net.shayes.mimic;
 
+import net.shayes.mimic.device.LaunchpadMK2;
 import net.shayes.mimic.macro.MacroManager;
 
 import javax.sound.midi.InvalidMidiDataException;

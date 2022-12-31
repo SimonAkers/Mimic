@@ -1,6 +1,6 @@
 package net.shayes.mimic.macro;
 
-import net.shayes.mimic.Device;
+import net.shayes.mimic.device.Device;
 import net.shayes.mimic.util.MidiUtils;
 
 import org.tomlj.Toml;

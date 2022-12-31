@@ -1,4 +1,4 @@
-package net.shayes.mimic;
+package net.shayes.mimic.device;
 
 import net.shayes.mimic.util.MidiUtils;
 import org.tomlj.Toml;
