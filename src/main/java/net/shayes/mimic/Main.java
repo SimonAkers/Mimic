@@ -1,6 +1,6 @@
 package net.shayes.mimic;
 
-import net.shayes.mimic.macros.MacroManager;
+import net.shayes.mimic.macro.MacroManager;
 
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiUnavailableException;

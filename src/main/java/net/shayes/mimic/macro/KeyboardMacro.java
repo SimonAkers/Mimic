@@ -1,4 +1,4 @@
-package net.shayes.mimic.macros;
+package net.shayes.mimic.macro;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;

@@ -1,4 +1,4 @@
-package net.shayes.mimic.macros;
+package net.shayes.mimic.macro;
 
 import javax.script.*;
 
