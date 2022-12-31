@@ -74,6 +74,7 @@ public class MacroManager implements Device.EventListener {
      * Loads macros from a TOML file.
      *
      * @param file The name (path) of the file.
+     *
      * @throws IOException If the file could not be accessed.
      * @throws AWTException If the macro could not be initialized.
      */
@@ -85,6 +86,7 @@ public class MacroManager implements Device.EventListener {
      * Loads macros from a TOML file.
      *
      * @param file The Path object representing the file.
+     *
      * @throws IOException If the file could not be accessed.
      * @throws AWTException If the macro could not be initialized.
      */
